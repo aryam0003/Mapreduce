@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+
+package mapper;
+
+// Defines the service
+service Mapper {
+    // Function invoked to send the request
+    rpc start_mapper (MapperRequest) returns (MapperReply) {}
+}
+
+// The request message containing requested numbers
+message MapperRequest {
+    string application = 1;
+    int32 threads = 2;
+    string chunk = 3;
+    string startline = 4;
+    string args = 5;
+    int32 id = 6;
+}
+
+// The response message containing response
+message MapperReply {
+    int32 result = 1;
+}
