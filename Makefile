@@ -9,16 +9,12 @@ CONDA_PREFIX = /scratch/sqb6440/miniconda3/envs/mapreduce
 PKG_CONFIG_PATH = $(CONDA_PREFIX)/lib/pkgconfig
 PATH := $(CONDA_PREFIX)/bin:$(PATH)
 
-#Hadoop HDFS
-HADOOP_HOME = /scratch/sqb6440/hadoop
-HDFS_BIN = $(HADOOP_HOME)/bin/hdfs
-
 LDFLAGS = -L$(CONDA_PREFIX)/lib \
           -lprotobuf -lgrpc++ -lgrpc++_reflection -lgpr -labsl_synchronization \
           -ldl -lpthread
 
 CXX = g++
-CPPFLAGS += -I$(CONDA_PREFIX)/include -I. -DHADOOP_HOME="\"$(HADOOP_HOME)\"" -DHDFS_BIN="\"$(HDFS_BIN)\""
+CPPFLAGS += -I$(CONDA_PREFIX)/include -I.
 CXXFLAGS += -std=c++17 
 
 GRPC_CPP_PLUGIN = grpc_cpp_plugin
